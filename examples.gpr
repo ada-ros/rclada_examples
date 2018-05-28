@@ -11,6 +11,7 @@ project Examples is
    for Library_Dir use "lib";
 
    for Main use (
+                 "listener_dyn.adb",
                  "listener_raw.adb"
                  --  "c_listener.c" -- Just to check that C calls work
                 );
@@ -36,7 +37,7 @@ project Examples is
    end Binder;
 
    package Linker is
-      for Switches ("ada") use ("-g");
+      for Switches ("ada") use ("-g"); -- -rdynamic?
    end Linker;
 
 end Examples;
