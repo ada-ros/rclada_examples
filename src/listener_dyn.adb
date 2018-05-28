@@ -12,7 +12,7 @@ procedure Listener_Dyn is
    Msg : ROSIDL.Dynamic.Message :=
            ROSIDL.Dynamic.Init ("std_msgs", "String");
 begin
-   Logging.Set_Name ("listener_raw");
+   Logging.Set_Name ("listener_dyn");
    Logging.Info ("Node starting...");
 
    declare
