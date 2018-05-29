@@ -12,6 +12,7 @@ project Examples is
 
    for Main use (
                  "listener_dyn.adb",
+                 "listener_metadata.adb",
                  "listener_raw.adb"
                  --  "c_listener.c" -- Just to check that C calls work
                 );
