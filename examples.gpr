@@ -11,6 +11,7 @@ project Examples is
    for Library_Dir use "lib";
 
    for Main use (
+                 "listener.adb",
                  "listener_dyn.adb",
                  "listener_metadata.adb"
                  --  "listener_raw.adb" -- No longer doable with high-level binding

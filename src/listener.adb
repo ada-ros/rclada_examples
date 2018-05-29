@@ -4,13 +4,16 @@ with RCL.Logging;
 with RCL.Nodes;
 
 with ROSIDL.Dynamic;
+with ROSIDL.Typesupport;
 
 -- This example uses the expected methodology from clients
 
 procedure Listener is
    use RCL;
 
-   procedure Callback (Msg : in out ROSIDL.Dynamic.Message) is
+   procedure Callback (Msg  : in out ROSIDL.Dynamic.Message;
+                       Info :        ROSIDL.Message_Info) is
+      pragma Unreferenced (Info);
    begin
       Logging.Info ("Got chatter! [" & Msg ("data").Get_String & "]");
    end Callback;
@@ -24,7 +27,7 @@ begin
    begin
       Logging.Info ("Node started");
 
-      Node.Subscribe (ROSIDL.Dynamic.Typesupport ("std_msgs", "String"),
+      Node.Subscribe (ROSIDL.Typesupport.Get_Message_Support ("std_msgs", "String"),
                       "/chatter",
                       Callback'Unrestricted_Access);
       --  Normally, with callbacks at library level, this will be a regular 'Access
