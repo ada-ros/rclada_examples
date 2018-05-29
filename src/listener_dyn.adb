@@ -27,7 +27,7 @@ begin
                                       Msg.Typesupport,
                                       "chatter");
 
-         Info : Subscriptions.Message_Info;
+         Info : ROSIDL.Message_Info;
       begin
          Logging.Info ("Subscription started");
 
