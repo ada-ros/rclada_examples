@@ -11,6 +11,8 @@ with ROSIDL.Typesupport;
 procedure Talker is
    use RCL;
 
+   Node : Nodes.Node := Nodes.Init (Utils.Command_Name);
+
    procedure Callback (Timer   : in out Timers.Timer;
                        Elapsed :        Duration) is
       pragma Unreferenced (Timer, Elapsed);
@@ -20,18 +22,12 @@ procedure Talker is
 
 begin
    Logging.Set_Name (Utils.Command_Name);
-   Logging.Info ("Node starting...");
+   Logging.Info ("Node started");
 
-   declare
-      Node : Nodes.Node := Nodes.Init (Utils.Command_Name);
-   begin
-      Logging.Info ("Node started");
+   Node.Timer_Add (1.0, Callback'Unrestricted_Access);
+   --  In normal use, with Callback at library level, a regular 'Access will suffice
 
-      Node.Timer_Add (1.0, Callback'Unrestricted_Access);
-      --  In normal use, with Callback at library level, a regular 'Access will suffice
-
-      loop
-         Node.Spin;
-      end loop;
-   end;
+   loop
+      Node.Spin;
+   end loop;
 end Talker;
