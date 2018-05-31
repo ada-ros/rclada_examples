@@ -1,5 +1,6 @@
 with RCL.Logging;
 with RCL.Nodes;
+with RCL.Publishers;
 with RCL.Timers;
 with RCL.Utils;
 
@@ -11,13 +12,26 @@ with ROSIDL.Typesupport;
 procedure Talker is
    use RCL;
 
-   Node : Nodes.Node := Nodes.Init (Utils.Command_Name);
+   Support : constant ROSIDL.Typesupport.Message_Support :=
+               ROSIDL.Typesupport.Get_Message_Support ("std_msgs", "String");
+
+   Node : Nodes.Node           := Nodes.Init (Utils.Command_Name);
+   Pub  : Publishers.Publisher := Node.Publish (Support, "/chatter");
+
+   Counter : Positive := 1;
 
    procedure Callback (Timer   : in out Timers.Timer;
                        Elapsed :        Duration) is
       pragma Unreferenced (Timer, Elapsed);
+      Msg : ROSIDL.Dynamic.Message := ROSIDL.Dynamic.Init (Support);
+      Txt : constant String := "Hello World:" & Counter'Img;
    begin
-      Logging.Info ("Timer triggered");
+      Logging.Info ("Publishing: '" & Txt & "'");
+
+      Msg ("data").Set_String (Txt);
+      Pub.Publish (Msg);
+
+      Counter := Counter + 1;
    end Callback;
 
 begin
