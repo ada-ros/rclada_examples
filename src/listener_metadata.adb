@@ -2,22 +2,28 @@ with Ada.Command_Line;
 
 with RCL.Logging;
 with RCL.Nodes;
-with RCL.Subscriptions;
+with RCL.Utils;
 
 with ROSIDL.Dynamic;
+with ROSIDL.Typesupport;
 
--- This example uses low level subscription and dynamic messages
+-- This example uses the expected methodology from clients
 
 procedure Listener_Metadata is
+
    package CL renames Ada.Command_Line;
+
    use RCL;
 
-   Msg : ROSIDL.Dynamic.Message :=
-           ROSIDL.Dynamic.Init
-             ((if CL.Argument_Count >= 1 then CL.Argument (1) else "std_msgs"),
-              (if CL.Argument_Count >= 2 then CL.Argument (2) else "String"));
+   procedure Callback (Msg  : in out ROSIDL.Dynamic.Message;
+                       Info :        ROSIDL.Message_Info) is
+      pragma Unreferenced (Info);
+   begin
+      Msg.Print_Metadata;
+   end Callback;
+
 begin
-   Logging.Set_Name (Ada.Command_Line.Command_Name);
+   Logging.Set_Name (Utils.Command_Name);
    Logging.Info ("Node starting...");
 
    declare
@@ -25,27 +31,16 @@ begin
    begin
       Logging.Info ("Node started");
 
---      Logging.Info ("SUPPORT: " & System.Address_Image (Rosidl.Std_Msgs.Msg.Typesupport_String.all'Address));
-      declare
-         Sub  : Subscriptions.Subscription :=
-                  Subscriptions.Init (Node,
-                                      Msg.Typesupport,
-                                      "chatter");
+      Node.Subscribe
+        (ROSIDL.Typesupport.Get_Message_Support
+           ((if CL.Argument_Count >= 1 then CL.Argument (1) else "std_msgs"),
+            (if CL.Argument_Count >= 2 then CL.Argument (2) else "String")),
+         "/chatter",
+         Callback'Unrestricted_Access);
+      --  Normally, with callbacks at library level, this will be a regular 'Access
 
-         Info : ROSIDL.Message_Info;
-      begin
-         Logging.Info ("Subscription started");
-
-         while True loop
-            delay 1.0;
-            if Sub.Take_Raw (Msg.To_Ptr, Info) then
-               Msg.Print_Metadata;
-            else
-               Logging.Info (":'(");
-            end if;
-         end loop;
-      end;
+      loop
+         Node.Spin;
+      end loop;
    end;
-
-   Logging.Info ("Node shut down");
 end Listener_Metadata;

@@ -1,4 +1,5 @@
 with "rcl";
+with "clib_geometry_msgs_rosidl_typesupport_c";
 
 project Examples is
 
@@ -13,7 +14,8 @@ project Examples is
    for Main use (
                  "listener.adb",
                  "listener_metadata.adb",
-                 "talker.adb"
+                 "talker.adb",
+                 "talker_metadata.adb"
                  --  "listener_raw.adb" -- No longer doable with high-level binding
                  --  "c_listener.c" -- Just to check that C calls work
                 );
