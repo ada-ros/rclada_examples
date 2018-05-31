@@ -12,7 +12,6 @@ project Examples is
 
    for Main use (
                  "listener.adb",
-                 "listener_dyn.adb",
                  "listener_metadata.adb",
                  "talker.adb"
                  --  "listener_raw.adb" -- No longer doable with high-level binding

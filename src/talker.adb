@@ -7,24 +7,27 @@ with RCL.Utils;
 with ROSIDL.Dynamic;
 with ROSIDL.Typesupport;
 
--- This example uses the expected methodology from clients
-
 procedure Talker is
    use RCL;
 
    Support : constant ROSIDL.Typesupport.Message_Support :=
                ROSIDL.Typesupport.Get_Message_Support ("std_msgs", "String");
 
-   Node : Nodes.Node           := Nodes.Init (Utils.Command_Name);
+   Node : Nodes.Node           := Nodes.Init   (Utils.Command_Name);
    Pub  : Publishers.Publisher := Node.Publish (Support, "/chatter");
 
    Counter : Positive := 1;
 
+   --------------
+   -- Callback --
+   --------------
+
    procedure Callback (Timer   : in out Timers.Timer;
                        Elapsed :        Duration) is
       pragma Unreferenced (Timer, Elapsed);
+
       Msg : ROSIDL.Dynamic.Message := ROSIDL.Dynamic.Init (Support);
-      Txt : constant String := "Hello World:" & Counter'Img;
+      Txt : constant String        := "Hello World:" & Counter'Img;
    begin
       Logging.Info ("Publishing: '" & Txt & "'");
 
@@ -36,9 +39,9 @@ procedure Talker is
 
 begin
    Logging.Set_Name (Utils.Command_Name);
-   Logging.Info ("Node started");
+   Logging.Info     ("Node started");
 
-   Node.Timer_Add (1.0, Callback'Unrestricted_Access);
+   Node.Timer_Add   (1.0, Callback'Unrestricted_Access);
    --  In normal use, with Callback at library level, a regular 'Access will suffice
 
    loop
