@@ -34,7 +34,8 @@ procedure Talker_Metadata is
       Msg : ROSIDL.Dynamic.Message := ROSIDL.Dynamic.Init (Support);
    begin
       Logging.Info ("Publishing...");
---        Msg ("orientation_covariance").As_Array.Element (1).As_Float64 := 6.66;
+      --        Msg ("orientation_covariance").As_Array.Element (1).As_Float64 := 6.66;
+      --        Msg ("ranges").As_Array.Resize (6);
       Pub.Publish (Msg);
    end Callback;
 
