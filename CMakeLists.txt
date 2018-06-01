@@ -19,11 +19,18 @@ endif()
 find_package(rclada_common REQUIRED)
 find_package(rclada REQUIRED)
 
+find_package(sensor_msgs REQUIRED)
+
+ada_import_c_libraries(${sensor_msgs_LIBRARIES})
+
 ###########################################################################
 
 ada_add_executable(${PROJECT_SOURCE_DIR} bin
         listener
-        talker)
+        talker
+
+        listener_metadata
+        talker_metadata)
 
 ada_export_package()
 

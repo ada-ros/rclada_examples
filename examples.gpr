@@ -1,5 +1,5 @@
 with "rcl";
-with "clib_geometry_msgs_rosidl_typesupport_c";
+with "clib_sensor_msgs_rosidl_typesupport_c";
 
 project Examples is
 
