@@ -25,7 +25,9 @@ ada_import_c_libraries(${sensor_msgs_LIBRARIES})
 
 ###########################################################################
 
-ada_add_executable(${PROJECT_SOURCE_DIR} bin
+ada_add_executables(
+        rclada_examples
+        ${PROJECT_SOURCE_DIR} bin
         listener
         talker
 
