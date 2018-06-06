@@ -1,5 +1,6 @@
 with "rcl";
 with "clib_sensor_msgs_rosidl_typesupport_c";
+with "ros2_typesupport_example_interfaces";
 
 project Examples is
 
@@ -12,6 +13,7 @@ project Examples is
    for Library_Dir use "lib";
 
    for Main use (
+                 "add_two_ints_server.adb",
                  "listener.adb",
                  "listener_metadata.adb",
                  "talker.adb",

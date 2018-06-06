@@ -9,6 +9,7 @@
 
   <buildtool_depend>cmake</buildtool_depend>
 
+  <build_depend>example_interfaces</build_depend>
   <build_depend>rclada</build_depend>
 
   <export>
