@@ -28,6 +28,11 @@ ada_import_msgs(example_interfaces)
 ada_add_executables(
         rclada_examples
         ${PROJECT_SOURCE_DIR} bin
+
+        add_two_ints_client_async
+        add_two_ints_client
+        add_two_ints_server
+
         listener
         talker
 
