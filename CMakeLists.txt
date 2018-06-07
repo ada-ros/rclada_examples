@@ -25,8 +25,6 @@ ada_import_c_libraries(${sensor_msgs_LIBRARIES})
 
 ada_import_msgs(example_interfaces)
 
-###########################################################################
-
 ada_add_executables(
         rclada_examples
         ${PROJECT_SOURCE_DIR} bin
