@@ -16,6 +16,7 @@ project Examples is
                  "add_two_ints_client.adb",
                  "add_two_ints_client_async.adb",
                  "add_two_ints_server.adb",
+                 "graph_info",
                  "listener.adb",
                  "listener_metadata.adb",
                  "talker.adb",

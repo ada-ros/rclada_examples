@@ -33,6 +33,8 @@ ada_add_executables(
         add_two_ints_client
         add_two_ints_server
 
+        graph_info
+
         listener
         talker
 
