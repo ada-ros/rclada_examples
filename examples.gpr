@@ -19,6 +19,7 @@ project Examples is
                  "graph_info",
                  "listener.adb",
                  "listener_metadata.adb",
+                 "pong_generic",
                  "talker.adb",
                  "talker_metadata.adb"
                  --  "listener_raw.adb" -- No longer doable with high-level binding

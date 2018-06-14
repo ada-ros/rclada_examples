@@ -17,7 +17,9 @@ procedure Add_Two_Ints_Client_Async is
    
    Request : ROSIDL.Dynamic.Message := ROSIDL.Dynamic.Init (Support.Request_Support);
    
-   procedure Client (Response : ROSIDL.Dynamic.Message) is
+   procedure Client (Node     : in out Nodes.Node'Class;
+                     Response : ROSIDL.Dynamic.Message) is
+      pragma Unreferenced (Node);
    begin
       Done := True;
       Logging.Info ("Got answer:" & Response ("sum").As_Int64.Image);

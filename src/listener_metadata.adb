@@ -20,9 +20,10 @@ procedure Listener_Metadata is
                  ((if CL.Argument_Count >= 1 then CL.Argument (1) else "std_msgs"),
                   (if CL.Argument_Count >= 2 then CL.Argument (2) else "String"));
 
-   procedure Callback (Msg  : in out ROSIDL.Dynamic.Message;
+   procedure Callback (Node : in out Nodes.Node'Class;
+                       Msg  : in out ROSIDL.Dynamic.Message;
                        Info :        ROSIDL.Message_Info) is
-      pragma Unreferenced (Info);
+      pragma Unreferenced (Info, Node);
    begin
 --        Logging.Info ("Comp:" & Msg ("orientation_covariance").As_Array.Element (1).As_Float64.Element.all'Img);
       Msg.Print_Metadata;

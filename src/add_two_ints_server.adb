@@ -16,9 +16,11 @@ procedure Add_Two_Ints_Server is
    -- Adder --
    -----------
 
-   procedure Adder (Req  : in out ROSIDL.Dynamic.Message;
+   procedure Adder (Node : in out Nodes.Node'Class;
+                    Req  : in out ROSIDL.Dynamic.Message;
                     Resp : in out ROSIDL.Dynamic.Message) 
    is
+      pragma Unreferenced (Node);
       A : constant Int64 := Req ("a").As_Int64;
       B : constant Int64 := Req ("b").As_Int64;
    begin

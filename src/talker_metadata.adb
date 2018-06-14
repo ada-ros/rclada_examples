@@ -27,9 +27,10 @@ procedure Talker_Metadata is
    -- Callback --
    --------------
 
-   procedure Callback (Timer   : in out Timers.Timer;
+   procedure Callback (Node    : in out Nodes.Node'Class;
+                       Timer   : in out Timers.Timer;
                        Elapsed :        Duration) is
-      pragma Unreferenced (Timer, Elapsed);
+      pragma Unreferenced (Timer, Elapsed, Node);
 
       Msg : ROSIDL.Dynamic.Message := ROSIDL.Dynamic.Init (Support);
    begin

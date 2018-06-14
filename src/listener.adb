@@ -10,9 +10,10 @@ with ROSIDL.Typesupport;
 procedure Listener is
    use RCL;
 
-   procedure Callback (Msg  : in out ROSIDL.Dynamic.Message;
+   procedure Callback (Node : in out Nodes.Node'Class;
+                       Msg  : in out ROSIDL.Dynamic.Message;
                        Info :        ROSIDL.Message_Info) is
-      pragma Unreferenced (Info);
+      pragma Unreferenced (Info, Node);
    begin
       Logging.Info ("Got chatter: '" & Msg ("data").Get_String & "'");
    end Callback;
