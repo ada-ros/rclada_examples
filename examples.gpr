@@ -19,6 +19,7 @@ project Examples is
                  "graph_info",
                  "listener.adb",
                  "listener_metadata.adb",
+                 "pong_class",
                  "pong_generic",
                  "talker.adb",
                  "talker_metadata.adb"

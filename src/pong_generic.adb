@@ -30,8 +30,16 @@ procedure Pong_Generic is
       Node : Nodes.Node           := Nodes.Init (Name, "/");
       Send : Publishers.Publisher := Node.Publish (Support, Topic);
    
+      -----------
+      -- Start --
+      -----------
+
       procedure Start;
       
+      ----------
+      -- Recv --
+      ----------
+
       procedure Recv (Node : in out Nodes.Node'Class;
                       Msg  : in out ROSIDL.Dynamic.Message;
                       Info :        ROSIDL.Message_Info);
@@ -44,6 +52,10 @@ procedure Pong_Generic is
       
       Counter : Int64 := 0;
       
+      ----------
+      -- Recv --
+      ----------
+
       procedure Recv (Node : in out Nodes.Node'Class;
                       Msg  : in out ROSIDL.Dynamic.Message;
                       Info :        ROSIDL.Message_Info) 
@@ -61,6 +73,10 @@ procedure Pong_Generic is
          end if;
       end Recv;
       
+      -----------
+      -- Start --
+      -----------
+
       procedure Start is
          Msg : ROSIDL.Dynamic.Message := ROSIDL.Dynamic.Init (Support);
       begin
