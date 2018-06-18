@@ -1,5 +1,6 @@
 with Ada.Command_Line; use Ada.Command_Line;
 
+with Rcl.Executors;
 with RCL.Logging;
 with RCL.Nodes;
 with RCL.Publishers;
@@ -34,7 +35,8 @@ procedure Pong_Class is
       overriding 
       function Init (Name      : String; 
                      Namespace : String  := "/";
-                     Opt       : Nodes.Options := Nodes.Default_Options) return Players;
+                     Opt       : Nodes.Options := Nodes.Default_Options;
+                     Executor  : access Executors.Executor'Class := null) return Players;
       
       -----------
       -- Start --
@@ -71,9 +73,10 @@ procedure Pong_Class is
 
       function Init (Name      : String; 
                      Namespace : String  := "/";
-                     Opt       : Nodes.Options := Nodes.Default_Options) return Players is
+                     Opt       : Nodes.Options := Nodes.Default_Options;
+                     Executor  : access Executors.Executor'Class := null) return Players is
       begin 
-         return Player : Players := (Nodes.Node'(Nodes.Init (Name, Namespace, Opt)) 
+         return Player : Players := (Nodes.Node'(Nodes.Init (Name, Namespace, Opt, Executor)) 
                                      with Counter => 0,
                                           Send    => <>) do
             Player.Subscribe (Support, Topic, Recv'Unrestricted_Access);
