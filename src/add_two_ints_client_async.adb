@@ -9,7 +9,7 @@ procedure Add_Two_Ints_Client_Async is
    
    use RCL;
 
-   Done    : Boolean    := False;
+   Done    : Boolean    := False with Volatile;
    Node    : Nodes.Node := Nodes.Init (Utils.Command_Name);
    Support : constant ROSIDL.Typesupport.Service_Support :=
                ROSIDL.Typesupport.Get_Service_Support ("example_interfaces", 
