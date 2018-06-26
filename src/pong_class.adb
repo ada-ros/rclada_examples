@@ -128,6 +128,7 @@ procedure Pong_Class is
 begin
    Logging.Set_Name (Utils.Command_Name);
    if Argument (1) = "ping" then
+      Logging.Info ("Serving...");
       Player.Start;
    end if;
    

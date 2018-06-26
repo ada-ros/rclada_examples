@@ -36,7 +36,5 @@ begin
                "add_two_ints",
                Adder'Unrestricted_Access);
 
-   loop
-      Node.Spin;
-   end loop;
+   Node.Spin (During => Forever);
 end Add_Two_Ints_Server;
