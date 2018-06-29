@@ -5,7 +5,7 @@ with RCL.Utils;
 procedure Graph_Info is
    use RCL;
 
-   Node : constant Nodes.Node := Nodes.Init (Utils.Command_Name);
+   Node : Nodes.Node := Nodes.Init (Utils.Command_Name);
 begin
    Logging.Info ("Starting...");
    delay 2.0; -- Let it soak some network info
