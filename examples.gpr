@@ -6,7 +6,7 @@ project Examples is
 
    for Source_Dirs use ("src");
 
-   for Languages use ("Ada", "C");
+   for Languages use ("Ada");
 
    for Object_Dir  use "obj";
    for Exec_Dir    use "bin";
@@ -23,8 +23,6 @@ project Examples is
                  "pong_generic",
                  "talker.adb",
                  "talker_metadata.adb"
-                 --  "listener_raw.adb" -- No longer doable with high-level binding
-                 --  "c_listener.c" -- Just to check that C calls work
                 );
 
    package Builder is
