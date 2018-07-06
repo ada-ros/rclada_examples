@@ -5,12 +5,12 @@
   <version>0.1.0</version>
   <description>rclada example nodes in Ada</description>
   <maintainer email="amosteo@unizar.es">Alejandro R. Mosteo</maintainer>
-  <license>GPL3</license>
+  <license>LGPLv3</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <build_depend>example_interfaces</build_depend>
-  <build_depend>rclada</build_depend>
+  <depend>example_interfaces</depend>
+  <depend>rclada</depend>
 
   <export>
     <build_type>ament_cmake</build_type>
