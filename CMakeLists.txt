@@ -4,10 +4,6 @@ project(rclada_examples VERSION 0.1.0)
 find_package(rclada_common REQUIRED)
 ada_begin_package()
 
-if(BUILD_TESTING)
-  # Silence a warning (?)
-endif()
-
 find_package(rclada REQUIRED)
 find_package(rosidl_generator_ada REQUIRED)
 find_package(sensor_msgs REQUIRED)
@@ -35,9 +31,3 @@ ada_add_executables(
         pong_generic)
 
 ada_end_package()
-
-#get_cmake_property(_variableNames VARIABLES)
-#list (SORT _variableNames)
-#foreach (_variableName ${_variableNames})
-#  message(STATUS "${_variableName}=${${_variableName}}")
-#endforeach()
