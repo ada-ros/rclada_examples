@@ -16,8 +16,7 @@ procedure Add_Two_Ints_Client is
    
    Request : ROSIDL.Dynamic.Message := ROSIDL.Dynamic.Init (Support.Request_Support);
 begin 
-   Logging.Set_Name (Utils.Command_Name);
-   Logging.Info     ("Node started for client of AddTwoInts");
+   Logging.Info ("Node started for client of AddTwoInts");
    
    Request ("a").As_Int64 := 2;
    Request ("b").As_Int64 := 3;

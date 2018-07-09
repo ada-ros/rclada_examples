@@ -41,10 +41,9 @@ procedure Talker_Metadata is
    end Callback;
 
 begin
-   Logging.Set_Name (Utils.Command_Name);
-   Logging.Info     ("Node started");
+   Logging.Info ("Node started");
 
-   Node.Timer_Add   (1.0, Callback'Unrestricted_Access);
+   Node.Timer_Add (1.0, Callback'Unrestricted_Access);
    --  In normal use, with Callback at library level, a regular 'Access will suffice
 
    loop

@@ -26,7 +26,6 @@ procedure Add_Two_Ints_Client_Async is
    end Client;
    
 begin 
-   Logging.Set_Name (Utils.Command_Name);
    Logging.Info     ("Node started for async client of AddTwoInts");
    
    Request ("a").As_Int64 := 2;

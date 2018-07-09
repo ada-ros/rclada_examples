@@ -3,7 +3,6 @@ with Ada.Command_Line; use Ada.Command_Line;
 with RCL.Logging;
 with RCL.Nodes;
 with RCL.Publishers;
-with RCL.Utils;
 
 with ROSIDL.Dynamic;
 with Rosidl.Types;
@@ -92,7 +91,6 @@ procedure Pong_Generic is
    package Player is new Players (Argument (1));
    
 begin
-   Logging.Set_Name (Utils.Command_Name);
    if Argument (1) = "ping" then
       Logging.Info ("Serving...");
       Player.Start;

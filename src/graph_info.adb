@@ -10,8 +10,6 @@ begin
    Logging.Info ("Starting...");
    delay 2.0; -- Let it soak some network info
    
-   Logging.Set_Name (Utils.Command_Name);
-   
    for Name of Node.Graph_Node_Names loop
       Logging.Info ("Node name: " & Name);
    end loop;

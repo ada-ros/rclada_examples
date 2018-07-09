@@ -39,7 +39,6 @@ procedure Talker is
    end Callback;
 
 begin
-   Logging.Set_Name (Utils.Command_Name);
    Logging.Info     ("Node started");
 
    Node.Timer_Add   (1.0, Callback'Unrestricted_Access);

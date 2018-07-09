@@ -29,7 +29,6 @@ procedure Add_Two_Ints_Server is
    end Adder;
    
 begin 
-   Logging.Set_Name (Utils.Command_Name);
    Logging.Info     ("Node started for service AddTwoInts");
    
    Node.Serve (ROSIDL.Typesupport.Get_Service_Support ("example_interfaces", "AddTwoInts"),

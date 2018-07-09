@@ -1,6 +1,5 @@
 with RCL.Logging;
 with RCL.Nodes;
-with RCL.Utils;
 
 with ROSIDL.Dynamic;
 with ROSIDL.Typesupport;
@@ -19,7 +18,6 @@ procedure Listener is
    end Callback;
 
 begin
-   Logging.Set_Name (Utils.Command_Name);
    Logging.Info ("Node starting...");
 
    declare
