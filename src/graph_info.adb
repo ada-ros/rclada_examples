@@ -16,25 +16,18 @@ begin
    
    Logging.Info ("---");
    
---     declare
---        Services : constant Utils.Services_And_Types := Node.Graph_Services;
---     begin 
---        for I in Services.Iterate loop 
---           Logging.Info ("Service: " & Utils.String_Maps.Key (I) & 
---                         "; type: "      & Services (I));
---        end loop;
---     end;
---     
---     Logging.Info ("---");
---     
---     declare
---        Topics : constant Utils.Topics_And_Types := Node.Graph_Topics;
---     begin 
---        for I in Topics.Iterate loop 
---           Logging.Info ("Topic: " & Utils.String_Maps.Key (I) & 
---                           "; type: "      & Topics (I) &
---                           "; publishers:" & Node.Graph_Count_Publishers (Utils.String_Maps.Key (I))'Img & 
---                           "; subscribers:" & Node.Graph_Count_Subscribers (Utils.String_Maps.Key (I))'Img);
---        end loop;
---     end;
+   for Service of Node.Graph_Services loop 
+      Logging.Info ("Service: " & Service.Name & 
+                      "; type: "  & Service.Ttype);
+   end loop;
+   
+   Logging.Info ("---");
+   
+   for Topic of Node.Graph_Topics loop
+      Logging.Info ("Topic: " & Topic.Name & 
+                      "; type: "      & Topic.Ttype &
+                      "; publishers:" &  Node.Graph_Count_Publishers  (Topic.Name)'Img & 
+                      "; subscribers:" & Node.Graph_Count_Subscribers (Topic.Name)'Img);
+   end loop;
+   
 end Graph_Info;
