@@ -16,8 +16,12 @@ procedure Listener_Metadata is
 
    Support : constant ROSIDL.Typesupport.Message_Support :=
                ROSIDL.Typesupport.Get_Message_Support
-                 ((if CL.Argument_Count >= 1 then CL.Argument (1) else "std_msgs"),
-                  (if CL.Argument_Count >= 2 then CL.Argument (2) else "String"));
+                 ((if CL.Argument_Count >= 1
+                  then ROSIDL.Namespace (CL.Argument (1))
+                  else "std_msgs"),
+                  (if CL.Argument_Count >= 2
+                   then CL.Argument (2)
+                   else "String"));
 
    procedure Callback (Node : in out Nodes.Node'Class;
                        Msg  : in out ROSIDL.Dynamic.Message;
