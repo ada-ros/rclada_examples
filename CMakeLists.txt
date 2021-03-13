@@ -9,7 +9,7 @@ find_package(rosidl_generator_ada REQUIRED)
 find_package(sensor_msgs REQUIRED)
 
 ada_import_c_libraries(${sensor_msgs_LIBRARIES})
-ada_import_msgs(example_interfaces)
+ada_import_interfaces(example_interfaces)
 
 ada_add_executables(
         rclada_examples
