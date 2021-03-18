@@ -18,7 +18,7 @@ procedure Talker_Metadata is
    Support : constant ROSIDL.Typesupport.Message_Support :=
                ROSIDL.Typesupport.Get_Message_Support
                  ((if CL.Argument_Count >= 1
-                  then ROSIDL.Namespace (CL.Argument (1))
+                  then ROSIDL.Package_Name (CL.Argument (1))
                   else "std_msgs"),
                   (if CL.Argument_Count >= 2
                    then CL.Argument (2)
