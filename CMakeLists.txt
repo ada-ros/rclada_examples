@@ -4,6 +4,7 @@ project(rclada_examples VERSION 0.1.0)
 find_package(rclada_common REQUIRED)
 ada_begin_package()
 
+find_package(example_interfaces)
 find_package(rclada REQUIRED)
 find_package(rosidl_generator_ada REQUIRED)
 find_package(sensor_msgs REQUIRED)
